@@ -1,0 +1,63 @@
+import React, { FormEvent, useState } from 'react'
+import { auth } from '../../../utils/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { Link, useNavigate } from 'react-router-dom'
+
+export const Login: React.FC = () => {
+  const navigate = useNavigate()
+  const [error, setError] = useState<string>('')
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault()
+    const { email, password } = event.target as typeof event.target & {
+      email: { value: string }
+      password: { value: string }
+    }
+
+    signInWithEmailAndPassword(auth, email.value, password.value)
+      .then(() => {
+        navigate('/')
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case 'auth/invalid-email':
+            setError('正しいメールアドレスの形式で入力してください。')
+            break
+          case 'auth/user-not-found':
+          case 'auth/wrong-password':
+          default:
+            setError('メールアドレスかパスワードに誤りがあります。')
+            break
+        }
+      })
+  }
+
+  return (
+    <div>
+      <h1>ログイン</h1>
+
+      <form onSubmit={handleSubmit}>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div>
+          <label htmlFor="email">メールアドレス</label>
+          <input id="email" name="email" type="email" placeholder="email" />
+        </div>
+        <div>
+          <label htmlFor="password">パスワード</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="password"
+          />
+        </div>
+        <div>
+          <button>ログイン</button>
+        </div>
+        <div>
+          ユーザ登録は<Link to={'/signup'}>こちら</Link>から
+        </div>
+      </form>
+    </div>
+  )
+}
