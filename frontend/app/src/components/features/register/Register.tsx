@@ -1,7 +1,6 @@
 import React from 'react'
 import { auth } from '../../../utils/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Button, Typography, styled } from '@mui/material'
@@ -112,66 +111,41 @@ export const Register: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
-=======
-import { useNavigate, Link } from 'react-router-dom'
-import { useState, FormEvent } from 'react'
-
-export const Register: React.FC = () => {
-  const navigate = useNavigate()
-  const [error, setError] = useState<string>('')
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const { email, password } = event.target as typeof event.target & {
-      email: { value: string }
-      password: { value: string }
-    }
-    createUserWithEmailAndPassword(auth, email.value, password.value)
->>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
       .then(() => {
         navigate('/')
       })
       .catch((error) => {
-<<<<<<< HEAD
+        console.log(error.code)
         switch (error.code) {
           case 'auth/invalid-email':
             setError('email', {
+              type: 'manual',
               message: '正しいメールアドレスの形式で入力してください。',
             })
             break
           case 'auth/weak-password':
             setError('password', {
+              type: 'manual',
               message: 'パスワードは6文字以上を設定する必要があります。',
             })
             break
           case 'auth/email-already-in-use':
-            setError('email', { message: 'そのメールアドレスは登録済みです。' })
+            setError('email', {
+              type: 'manual',
+              message: 'そのメールアドレスは登録済みです。',
+            })
             break
           default:
             setError('email', {
+              type: 'manual',
               message: 'メールアドレスかパスワードに誤りがあります。',
             })
-=======
-        console.log(error.code)
-        switch (error.code) {
-          case 'auth/invalid-email':
-            setError('正しいメールアドレスの形式で入力してください。')
-            break
-          case 'auth/weak-password':
-            setError('パスワードは6文字以上を設定する必要があります。')
-            break
-          case 'auth/email-already-in-use':
-            setError('そのメールアドレスは登録済みです。')
-            break
-          default:
-            setError('メールアドレスかパスワードに誤りがあります。')
->>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
             break
         }
       })
   }
 
   return (
-<<<<<<< HEAD
     <>
       <TopContainer>
         <Background />
@@ -223,32 +197,5 @@ export const Register: React.FC = () => {
         </GuideTypography>
       </TopContainer>
     </>
-=======
-    <div>
-      <h1>ユーザ登録</h1>
-      <form onSubmit={handleSubmit}>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <div>
-          <label htmlFor="email">メールアドレス</label>
-          <input id="email" name="email" type="email" placeholder="email" />
-        </div>
-        <div>
-          <label htmlFor="password">パスワード</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="password"
-          />
-        </div>
-        <div>
-          <button>登録</button>
-        </div>
-        <div>
-          ユーザ登録済の場合は<Link to={'/login'}>こちら</Link>から
-        </div>
-      </form>
-    </div>
->>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
   )
 }
