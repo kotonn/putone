@@ -3,3 +3,37 @@
 @tailwind utilities;
 
 @import 'custom_aos.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+
+.custom-font-for-main {
+  font-family: 'Carter One', cursive;
+  color: #ffb800;
+}
+
+.custom-font-for-sub {
+  font-family: 'Carter One', cursive;
+  color: #ffffff;
+}
+
+.custom-font-for-nav {
+  font-family: 'Carter One', cursive;
+  color: #ffffff;
+  &:hover {
+    color: #ffb800;
+  }
+  &:focus {
+    color: #ffb800;
+  }
+}
+
+.custom-font-for-button {
+  font-family: 'Carter One', cursive;
+  color: #ffffff;
+}
+
+.custom-font-for-text {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 400;
+}
