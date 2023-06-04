@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import { Button, Container, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { TextDencrypt } from './TextDencrypt'
@@ -7,6 +8,14 @@ import '../../../styles/index.css'
 import { Navbar } from './Navbar'
 
 const TopContainer = styled('div')(() => ({
+=======
+import { Container, Typography } from '@mui/material'
+import { styled } from '@mui/system'
+import { TextDencrypt } from './TextDencrypt'
+import { Background } from './Background'
+
+const TopScreenContainer = styled('div')(() => ({
+>>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
   display: 'flex',
   flexDirection: 'column',
   minHeight: '100vh',
@@ -17,6 +26,7 @@ const MainContainer = styled(Container)({
   maxWidth: '100vw',
   marginTop: 'auto',
   marginBottom: 'auto',
+<<<<<<< HEAD
   alignItems: 'center',
 })
 
@@ -25,6 +35,21 @@ const MainTypography = styled(Typography)(() => ({
   '@media (max-width: 768px)': {
     fontSize: '3rem',
     marginLeft: '1rem',
+=======
+})
+
+const HeadingContainer = styled('div')(({ theme }) => ({
+  marginLeft: theme.spacing(50),
+  '@media (max-width: 768px)': {
+    marginLeft: theme.spacing(10),
+  },
+}))
+
+const MainTypography = styled(Typography)(() => ({
+  color: '#f9f4ef',
+  '@media (max-width: 768px)': {
+    fontSize: '2rem',
+>>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
   },
   '@media (min-width: 768px)': {
     fontSize: '5rem',
@@ -34,14 +59,19 @@ const MainTypography = styled(Typography)(() => ({
 const SubTypography = styled(Typography)(() => ({
   color: '#f9f4ef',
   '@media (max-width: 768px)': {
+<<<<<<< HEAD
     fontSize: '1.2rem',
     marginLeft: '1rem',
+=======
+    fontSize: '1rem',
+>>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
   },
   '@media (min-width: 768px)': {
     fontSize: '3rem',
   },
 }))
 
+<<<<<<< HEAD
 const ButtonContainer = styled('div')(() => ({
   position: 'absolute',
   width: '100%',
@@ -115,5 +145,22 @@ export const TopScreen: React.FC = () => {
       </TopContainer>
       <Navbar />
     </>
+=======
+export const TopScreen: React.FC = () => {
+  return (
+    <TopScreenContainer>
+      <Background />
+      <MainContainer>
+        <HeadingContainer>
+          <MainTypography>
+            <TextDencrypt text="PuTone" />
+          </MainTypography>
+          <SubTypography>
+            <TextDencrypt text="Express yourself through music" />
+          </SubTypography>
+        </HeadingContainer>
+      </MainContainer>
+    </TopScreenContainer>
+>>>>>>> 375a2f060ee84edfe0828c7821378d392cd22080
   )
 }
