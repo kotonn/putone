@@ -20,13 +20,6 @@ const MainContainer = styled(Container)({
   alignItems: 'center',
 })
 
-const HeadingContainer = styled('div')(({ theme }) => ({
-  marginLeft: theme.spacing(50),
-  '@media (max-width: 768px)': {
-    marginLeft: theme.spacing(10),
-  },
-}))
-
 const MainTypography = styled(Typography)(() => ({
   color: '#f9f4ef',
   '@media (max-width: 768px)': {
