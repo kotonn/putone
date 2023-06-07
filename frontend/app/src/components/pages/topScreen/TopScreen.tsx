@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { TextDencrypt } from './TextDencrypt'
 import { Background } from './Background'
 import '../../../styles/index.css'
 import { Navbar } from './Navbar'
+import { Usage } from './Usage'
+import { ShowDemographics } from './ShowDemographics'
+import { useScrollDirection } from '../../../hooks/useScrollDirection'
+import { useScrollPosition } from '../../../hooks/useScrollPosition'
+import { NeonTitle } from './NeonTitle'
 
 const TopScreenContainer = styled('div')(() => ({
   display: 'flex',
@@ -80,12 +85,11 @@ export const TopScreen: React.FC = () => {
     <>
       <TopScreenContainer>
         <Background />
-        <MainContainer>
-          <MainTypography>
+        <MainContainer id="#">
+          {/* <MainTypography>
             <div
               className="custom-font-for-main"
               data-aos="fade-right"
-              data-aos-duration="1000"
               data-aos-delay="500"
             >
               <TextDencrypt text="PuTone" />
@@ -95,12 +99,11 @@ export const TopScreen: React.FC = () => {
             <div
               className="custom-font-for-sub"
               data-aos="fade-right"
-              data-aos-duration="1000"
               data-aos-delay="500"
             >
               <TextDencrypt text="Express yourself through music!" />
             </div>
-          </SubTypography>
+          </SubTypography> */}
         </MainContainer>
         <ButtonContainer>
           <RegisterButton
@@ -114,6 +117,8 @@ export const TopScreen: React.FC = () => {
         </ButtonContainer>
       </TopScreenContainer>
       <Navbar />
+      <NeonTitle />
+      <Usage />
     </>
   )
 }

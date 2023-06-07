@@ -10,6 +10,9 @@ const LogoImg = styled('p')(() => ({
     fontSize: '2rem',
     color: '#f9f4ef',
   },
+  '@media (max-width: 768px)': {
+    display: 'none',
+  },
 }))
 
 const NavContainer = styled('nav')(() => ({
@@ -21,6 +24,8 @@ const NavContainer = styled('nav')(() => ({
   '@media (max-width: 768px)': {
     top: '3%',
     right: '5%',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
     '& a': {
       textDecoration: 'none',
       color: '#f9f4ef',
@@ -57,8 +62,12 @@ const NavTypography = styled(Typography)(() => ({
   },
 }))
 
-export const Navbar = () => {
-  const [activeNav, setActiveNav] = useState('#')
+export const Navbar: React.FC = () => {
+  const [activeNav, setActiveNav] = useState<string>('#')
+
+  const handleNavClick = (id: string) => {
+    setActiveNav(id)
+  }
 
   return (
     <>
@@ -76,7 +85,7 @@ export const Navbar = () => {
       >
         <a
           href="#"
-          onClick={() => setActiveNav('#')}
+          onClick={() => handleNavClick('#')}
           className={activeNav === '#' ? 'active' : ''}
         >
           <NavTypography>
@@ -84,9 +93,9 @@ export const Navbar = () => {
           </NavTypography>
         </a>
         <a
-          href="#use"
-          onClick={() => setActiveNav('#use')}
-          className={activeNav === '#use' ? 'active' : ''}
+          href="#usage"
+          onClick={() => handleNavClick('#usage')}
+          className={activeNav === '#usage' ? 'active' : ''}
         >
           <NavTypography>
             <div className="custom-font-for-nav">Usage</div>
@@ -94,7 +103,7 @@ export const Navbar = () => {
         </a>
         <a
           href="#subscribe"
-          onClick={() => setActiveNav('#subscribe')}
+          onClick={() => handleNavClick('#subscribe')}
           className={activeNav === '#subscribe' ? 'active' : ''}
         >
           <NavTypography>
@@ -103,7 +112,7 @@ export const Navbar = () => {
         </a>
         <a
           href="#contact"
-          onClick={() => setActiveNav('#contact')}
+          onClick={() => handleNavClick('#contact')}
           className={activeNav === '#contact' ? 'active' : ''}
         >
           <NavTypography>

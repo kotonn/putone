@@ -13,6 +13,7 @@ module.exports = {
           headline: '#020826',
           main: '#d7532f',
           sub: '#283b72',
+          sub2: '#ffb800',
         },
       },
     },
