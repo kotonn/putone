@@ -6,6 +6,7 @@ import { Register } from './components/features/register/Register'
 import { Login } from './components/features/login/Login'
 import { TopScreen } from './components/pages/topScreen/TopScreen'
 import { AuthProvider } from './hooks/useAuthContext'
+import { NextScreen } from './components/pages/nextScreen/NextScreen'
 
 function App() {
   useEffect(() => {
@@ -21,7 +22,7 @@ function App() {
       <div className="min-h-screen">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<TopScreen />} />
+            <Route path="/" element={<NextScreen />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Routes>
